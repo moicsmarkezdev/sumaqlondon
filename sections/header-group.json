@@ -26,7 +26,7 @@
       ],
       "settings": {
         "color_scheme": "scheme-3",
-        "enable_sticky": true,
+        "enable_sticky": false,
         "autoplay": true,
         "cycle_speed": 5,
         "desktop_font_size": 11,
