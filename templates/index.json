@@ -433,6 +433,7 @@
         "image-1",
         "image-2"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "",
         "reveal_on_scroll": true,
@@ -455,26 +456,13 @@
         "button_2_style": "solid"
       }
     },
-    "newsletter": {
-      "type": "newsletter",
-      "settings": {
-        "color_scheme": "",
-        "separate_section_with_border": true,
-        "image_size": "auto",
-        "subheading": "Keep me updated",
-        "title": "Newsletter",
-        "content": "<p>A short sentence describing what someone will receive by subscribing.</p>",
-        "button_text": "Subscribe",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
-      }
-    },
     "shop-the-look": {
       "type": "shop-the-look",
       "blocks": {
         "look-1": {
           "type": "look",
           "settings": {
+            "image": "shopify://shop_images/Captura_de_pantalla_2024-11-10_a_la_s_7.07.02_p._m..png",
             "hot_spots_background": "#ffffff",
             "product_1": "",
             "product_1_horizontal_position": 55,
@@ -521,6 +509,20 @@
         "button_link": "",
         "button_text": "View all"
       }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "image_size": "auto",
+        "subheading": "Keep me updated",
+        "title": "Newsletter",
+        "content": "<p>A short sentence describing what someone will receive by subscribing.</p>",
+        "button_text": "Subscribe",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
     }
   },
   "order": [
@@ -531,8 +533,8 @@
     "before-after",
     "image-with-text-scroll",
     "multiple-media-with-text",
-    "newsletter",
     "shop-the-look",
-    "blog-posts"
+    "blog-posts",
+    "newsletter"
   ]
 }
