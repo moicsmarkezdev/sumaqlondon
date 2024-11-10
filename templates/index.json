@@ -67,6 +67,7 @@
         },
         "video_AirmA8": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/Banner principal - Home.mp4",
             "allow_sound": true,
