@@ -346,6 +346,7 @@
         "before",
         "after"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "",
         "separate_section_with_border": true,
@@ -361,23 +362,25 @@
     "image-with-text-scroll": {
       "type": "images-with-text-scroll",
       "blocks": {
-        "item-1": {
+        "item-2": {
           "type": "image_with_text",
           "settings": {
+            "image": "shopify://shop_images/Captura_de_pantalla_2024-11-10_a_la_s_7.07.15_p._m..png",
             "subheading": "",
             "title": "#1",
-            "content": "<p>Welcome your customers to your store by sharing temporary offers or explaining to them what your products are about.</p>",
+            "content": "<p>En Este contenido se puede hablar de los procesos de producción o un poco más de los valores de la marca</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "solid"
           }
         },
-        "item-2": {
+        "item-1": {
           "type": "image_with_text",
           "settings": {
+            "image": "shopify://shop_images/Captura_de_pantalla_2024-11-10_a_la_s_7.06.57_p._m..png",
             "subheading": "",
             "title": "#2",
-            "content": "<p>Create trust with your customers by explaining the story of your brand. Share your values or what is important to you.</p>",
+            "content": "<p>En Este contenido se puede hablar de los procesos de producción o un poco más de los valores de la marca</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "solid"
@@ -386,9 +389,10 @@
         "item-3": {
           "type": "image_with_text",
           "settings": {
+            "image": "shopify://shop_images/Captura_de_pantalla_2024-11-10_a_la_s_7.07.20_p._m..png",
             "subheading": "",
             "title": "#3",
-            "content": "<p>Share information about your product with your customers. Describe a product, and share info about your production process...</p>",
+            "content": "<p>En Este contenido se puede hablar de los procesos de producción o un poco más de los valores de la marca</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "solid"
@@ -396,8 +400,8 @@
         }
       },
       "block_order": [
-        "item-1",
         "item-2",
+        "item-1",
         "item-3"
       ],
       "settings": {
