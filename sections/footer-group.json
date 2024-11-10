@@ -98,12 +98,21 @@
             "content": "<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme editor.</p>",
             "enable_follow_on_shop": true
           }
+        },
+        "image_gCWNMH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Isotipo_ladrillo_2_3ef3f3db-c4c2-4afa-9deb-d5eac4b377b9.png",
+            "image_width": 150,
+            "link": ""
+          }
         }
       },
       "block_order": [
         "newsletter",
         "links",
-        "text"
+        "text",
+        "image_gCWNMH"
       ],
       "settings": {
         "color_scheme": "",
