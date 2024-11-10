@@ -483,7 +483,7 @@
         "look-1"
       ],
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "separate_section_with_border": true,
         "subheading": "",
         "title": "Shop the look",
@@ -494,7 +494,7 @@
     "blog-posts": {
       "type": "blog-posts",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "separate_section_with_border": true,
         "blog": "",
         "posts_count": 3,
