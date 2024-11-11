@@ -43,6 +43,17 @@
             "show_below_gallery": false
           }
         },
+        "accordion_kT3Qxg": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": true,
+            "icon": "none",
+            "title": "Title",
+            "content": "<p>Share some content to your customers about your products.</p>",
+            "liquid": "",
+            "page": ""
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -86,6 +97,7 @@
         "payment_terms",
         "separator",
         "description",
+        "accordion_kT3Qxg",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
