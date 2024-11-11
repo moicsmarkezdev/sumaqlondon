@@ -36,6 +36,17 @@
           "type": "separator",
           "settings": {}
         },
+        "accordion_8tyE8Y": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": true,
+            "icon": "none",
+            "title": "METAFIELDS - DESCRIPTION",
+            "content": "<p>Share some content to your customers about your products.</p>",
+            "liquid": "",
+            "page": ""
+          }
+        },
         "description": {
           "type": "description",
           "settings": {
@@ -85,6 +96,7 @@
         "price",
         "payment_terms",
         "separator",
+        "accordion_8tyE8Y",
         "description",
         "variant_picker",
         "quantity_selector",
