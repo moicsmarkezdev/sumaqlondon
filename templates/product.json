@@ -39,14 +39,14 @@
         "description": {
           "type": "description",
           "settings": {
-            "collapse_content": true,
+            "collapse_content": false,
             "show_below_gallery": false
           }
         },
         "accordion_kT3Qxg": {
           "type": "accordion",
           "settings": {
-            "show_below_gallery": false,
+            "show_below_gallery": true,
             "icon": "none",
             "title": "Title",
             "content": "<p>Share some content to your customers about your products.</p>",
