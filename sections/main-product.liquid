@@ -23,17 +23,26 @@
 
 <style>
   #shopify-section-{{ section.id }} {
-    --product-grid: "product-gallery" "product-info" {% if has_content_below_gallery %}"product-content"{% endif %} / minmax(0, 1fr);
+    /* Configuración del grid para mantener la estructura deseada */
+    display: grid;
+    grid-template-areas: 
+      "gallery"
+      "info";
+    grid-template-columns: 1fr;
   }
 
-  /* Configuración para Desktop para mostrar los elementos al lado derecho */
   @media screen and (min-width: 1000px) {
     #shopify-section-{{ section.id }} {
-      {%- if has_content_below_gallery -%}
-        --product-grid: "product-gallery product-info" auto "product-gallery product-info" minmax(0, 1fr) / minmax(0, {{ 100.0 | minus: section.settings.product_info_size | divided_by: 100.0 }}fr) minmax(0, {{ section.settings.product_info_size | divided_by: 100.0 }}fr);
-      {%- else -%}
-        --product-grid: "product-gallery product-info" / minmax(0, {{ 100.0 | minus: section.settings.product_info_size | divided_by: 100.0 }}fr) minmax(0, {{ section.settings.product_info_size | divided_by: 100.0 }}fr);
-      {%- endif -%}
+      grid-template-areas: 
+        "gallery info";
+      grid-template-columns: minmax(0, {{ 100.0 | minus: section.settings.product_info_size | divided_by: 100.0 }}fr) minmax(0, {{ section.settings.product_info_size | divided_by: 100.0 }}fr);
+      gap: 2rem; /* Ajusta el espacio entre las columnas */
+    }
+
+    /* Ajuste para la sección de descripción y metacampos */
+    .product-meta-fields {
+      grid-area: info;
+      max-width: 400px; /* Ajusta el ancho para que sea más pequeño y se mantenga en la columna derecha */
     }
   }
 </style>
@@ -44,60 +53,62 @@
 <div class="section-spacing section-spacing--tight color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }}">
   <div class="container {% unless section.settings.container_size == 'full' %}container--{{ section.settings.container_size }}{% endunless %}">
     <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
-      <div class="product">
+      <div class="product" style="display: grid; grid-template-areas: 'gallery info';">
 
         <!-- Galería de imágenes del producto -->
-        {%- if product.media.size > 0 -%}
-          {%- render 'product-gallery',
-              product: product,
-              product_form_id: product_form_id,
-              desktop_layout: section.settings.desktop_media_layout,
-              mobile_controls: section.settings.mobile_controls,
-              enable_media_autoplay: section.settings.enable_media_autoplay,
-              enable_video_looping: section.settings.enable_video_looping,
-              enable_image_zoom: section.settings.enable_image_zoom,
-              max_image_zoom_level: section.settings.max_image_zoom_level -%}
-        {%- endif -%}
+        <div class="product-gallery" style="grid-area: gallery;">
+          {%- if product.media.size > 0 -%}
+            {%- render 'product-gallery',
+                product: product,
+                product_form_id: product_form_id,
+                desktop_layout: section.settings.desktop_media_layout,
+                mobile_controls: section.settings.mobile_controls,
+                enable_media_autoplay: section.settings.enable_media_autoplay,
+                enable_video_looping: section.settings.enable_video_looping,
+                enable_image_zoom: section.settings.enable_image_zoom,
+                max_image_zoom_level: section.settings.max_image_zoom_level -%}
+          {%- endif -%}
+        </div>
 
-        <!-- Información del producto -->
-        {%- render 'product-info', 
-          product: product, 
-          product_form_id: product_form_id,
-          center_basic_info: section.settings.center_basic_info, 
-          has_content_below_gallery: has_content_below_gallery, 
-          context: 'main_product' 
-        -%}
+        <!-- Información y metacampos del producto en el lateral derecho -->
+        <div class="product-info" style="grid-area: info;">
+          {%- render 'product-info', 
+            product: product, 
+            product_form_id: product_form_id,
+            center_basic_info: section.settings.center_basic_info, 
+            has_content_below_gallery: has_content_below_gallery, 
+            context: 'main_product' 
+          -%}
 
-        <!-- Descripción y Metacampos del producto -->
-        <div id="product-meta-fields" class="product-meta-fields prose">
           <!-- Descripción del producto -->
           {%- if product.description != blank -%}
-            <div class="product-content-below-gallery__description">
+            <div class="product-content-below-gallery__description prose">
               {{- product.description -}}
             </div>
           {%- endif -%}
 
-          <!-- Metacampos (Material, Design, Craftsmanship, Features) -->
-          {%- assign metacampo_material = product.metafields.custom.material -%}
-          {%- assign metacampo_design = product.metafields.custom.design -%}
-          {%- assign metacampo_craftsmanship = product.metafields.custom.craftmanship -%}
-          {%- assign metacampo_features = product.metafields.custom.features -%}
+          <!-- Metacampos: Material, Design, Craftsmanship, Features -->
+          <div id="product-meta-fields" class="product-meta-fields">
+            {%- assign metacampo_titles = "Material,Design,Craftsmanship,Features" | split: "," -%}
+            {%- assign metacampo_contenidos = "
+              {{ product.metafields.custom.material }},
+              {{ product.metafields.custom.design }},
+              {{ product.metafields.custom.craftmanship }},
+              {{ product.metafields.custom.features }}" | split: "," -%}
 
-          {%- assign metacampo_titles = "Material,Design,Craftsmanship,Features" | split: "," -%}
-          {%- assign metacampo_contenidos = metacampo_material | append: "," | append: metacampo_design | append: "," | append: metacampo_craftsmanship | append: "," | append: metacampo_features | split: "," -%}
-
-          {%- for metacampo_title in metacampo_titles -%}
-            {%- assign metacampo_content = metacampo_contenidos[forloop.index0] | strip -%}
-            {%- if metacampo_content != blank -%}
-              {%- render 'accordion', title: metacampo_title, content: metacampo_content, prose_content: true, size: 'lg' -%}
-            {%- endif -%}
-          {%- endfor -%}
+            {%- for metacampo_title in metacampo_titles -%}
+              {%- assign metacampo_content = metacampo_contenidos[forloop.index0] | strip -%}
+              {%- if metacampo_content != blank -%}
+                {%- render 'accordion', title: metacampo_title, content: metacampo_content, prose_content: true, size: 'lg' -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
         </div>
-
       </div>
     </product-rerender>
   </div>
 </div>
+
 
 {%- if section.settings.show_sticky_add_to_cart and product.available -%}
   <product-rerender id="{{ product_form_id }}-sticky-bar" observe-form="{{ product_form_id }}">
