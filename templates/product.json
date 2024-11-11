@@ -43,17 +43,6 @@
             "show_below_gallery": false
           }
         },
-        "accordion_QUiRA8": {
-          "type": "accordion",
-          "settings": {
-            "show_below_gallery": false,
-            "icon": "none",
-            "title": "Title",
-            "content": "<p>Share some content to your customers about your products.</p>",
-            "liquid": "",
-            "page": ""
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -97,7 +86,6 @@
         "payment_terms",
         "separator",
         "description",
-        "accordion_QUiRA8",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
