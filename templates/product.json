@@ -36,22 +36,22 @@
           "type": "separator",
           "settings": {}
         },
-        "accordion_8tyE8Y": {
-          "type": "accordion",
-          "settings": {
-            "show_below_gallery": true,
-            "icon": "none",
-            "title": "METAFIELDS - DESCRIPTION",
-            "content": "<p>Share some content to your customers about your products.</p>",
-            "liquid": "",
-            "page": ""
-          }
-        },
         "description": {
           "type": "description",
           "settings": {
             "collapse_content": false,
             "show_below_gallery": false
+          }
+        },
+        "accordion_8tyE8Y": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "METAFIELDS - DESCRIPTION",
+            "content": "<p>Share some content to your customers about your products.</p>",
+            "liquid": "",
+            "page": ""
           }
         },
         "variant_picker": {
@@ -96,8 +96,8 @@
         "price",
         "payment_terms",
         "separator",
-        "accordion_8tyE8Y",
         "description",
+        "accordion_8tyE8Y",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
