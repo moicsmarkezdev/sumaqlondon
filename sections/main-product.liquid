@@ -65,58 +65,28 @@
           context: 'main_product' 
         -%}
 
-        <!-- Contenido adicional (metacampos y descripción) -->
-        <div id="product-extra-information" class="product-content-below-gallery empty:hidden scroll-margin-offset">
-          {%- for block in section.blocks -%}
-            {%- case block.type -%}
+        <!-- Descripción del producto -->
+        {%- if product.description != blank -%}
+          <div class="product-content-below-gallery__description prose">
+            {{- product.description -}}
+          </div>
+        {%- endif -%}
 
-              {%- when 'description' -%}
-                {%- if product.description != blank and block.settings.show_below_gallery == true -%}
-                  {%- if block.settings.collapse_content -%}
-                    {%- assign accordion_title = 'product.general.description' | t -%}
-                    {%- render 'accordion', title: accordion_title, content: product.description, prose_content: true, size: 'lg', block: block -%}
-                  {%- else -%}
-                    <div class="product-content-below-gallery__description prose">
-                      {{- product.description -}}
-                    </div>
-                  {%- endif -%}
-                {%- endif -%}
+        <!-- Metacampos (Material, Design, Craftsmanship, Features) justo después de la descripción -->
+        <div id="product-meta-fields" class="product-meta-fields">
+          {%- assign titles = "Material,Design,Craftsmanship,Features" | split: "," -%}
+          {%- assign contents = "
+            {{ product.metafields.custom.material }},
+            {{ product.metafields.custom.design }},
+            {{ product.metafields.custom.craftmanship }},
+            {{ product.metafields.custom.features }}" | split: "," -%}
 
-              <!-- Secciones colapsables de metacampos específicas después de la descripción -->
-              {%- when 'accordion' -%}
-                <!-- Material -->
-                {%- assign accordion_title_material = 'Material' -%}
-                {%- assign accordion_content_material = product.metafields.custom.material -%}
-                {%- if accordion_content_material != blank -%}
-                  {%- render 'accordion', title: accordion_title_material, content: accordion_content_material, size: 'lg', prose_content: true, block: block -%}
-                {%- endif -%}
-
-                <!-- Design -->
-                {%- assign accordion_title_design = 'Design' -%}
-                {%- assign accordion_content_design = product.metafields.custom.design -%}
-                {%- if accordion_content_design != blank -%}
-                  {%- render 'accordion', title: accordion_title_design, content: accordion_content_design, size: 'lg', prose_content: true, block: block -%}
-                {%- endif -%}
-
-                <!-- Craftsmanship -->
-                {%- assign accordion_title_craftsmanship = 'Craftsmanship' -%}
-                {%- assign accordion_content_craftsmanship = product.metafields.custom.craftmanship -%}
-                {%- if accordion_content_craftsmanship != blank -%}
-                  {%- render 'accordion', title: accordion_title_craftsmanship, content: accordion_content_craftsmanship, size: 'lg', prose_content: true, block: block -%}
-                {%- endif -%}
-
-                <!-- Features -->
-                {%- assign accordion_title_features = 'Features' -%}
-                {%- assign accordion_content_features = product.metafields.custom.features -%}
-                {%- if accordion_content_features != blank -%}
-                  {%- render 'accordion', title: accordion_title_features, content: accordion_content_features, size: 'lg', prose_content: true, block: block -%}
-                {%- endif -%}
-              <!-- Fin de secciones colapsables específicas -->
-
-              {%- when 'complementary_products' -%}
-                {%- render 'complementary-products', product: product, block: block -%}
-             {%- endcase -%}
-            {%- endfor -%}
+          {%- for title in titles -%}
+            {%- assign content = contents[forloop.index0] | strip -%}
+            {%- if content != blank -%}
+              {%- render 'accordion', title: title, content: content, prose_content: true, size: 'lg' -%}
+            {%- endif -%}
+          {%- endfor -%}
         </div>
 
       </div>
