@@ -72,14 +72,15 @@
           </div>
         {%- endif -%}
 
-        <!-- Metacampos (Material, Design, Craftsmanship, Features) justo después de la descripción y antes del botón de compra -->
+        <!-- Metacampos (Material, Design, Craftsmanship, Features) justo después de la descripción -->
         <div id="product-meta-fields" class="product-meta-fields">
+          {%- assign metacampo_material = product.metafields.custom.material -%}
+          {%- assign metacampo_design = product.metafields.custom.design -%}
+          {%- assign metacampo_craftsmanship = product.metafields.custom.craftmanship -%}
+          {%- assign metacampo_features = product.metafields.custom.features -%}
+
           {%- assign metacampo_titles = "Material,Design,Craftsmanship,Features" | split: "," -%}
-          {%- assign metacampo_contenidos = "
-            {{ product.metafields.custom.material }},
-            {{ product.metafields.custom.design }},
-            {{ product.metafields.custom.craftmanship }},
-            {{ product.metafields.custom.features }}" | split: "," -%}
+          {%- assign metacampo_contenidos = metacampo_material | append: "," | append: metacampo_design | append: "," | append: metacampo_craftsmanship | append: "," | append: metacampo_features | split: "," -%}
 
           {%- for metacampo_title in metacampo_titles -%}
             {%- assign metacampo_content = metacampo_contenidos[forloop.index0] | strip -%}
@@ -87,6 +88,11 @@
               {%- render 'accordion', title: metacampo_title, content: metacampo_content, prose_content: true, size: 'lg' -%}
             {%- endif -%}
           {%- endfor -%}
+        </div>
+
+        <!-- Contador de unidades justo antes del botón de compra -->
+        <div class="quantity-selector-section">
+          {%- render 'quantity-selector', form: product_form_id -%}
         </div>
 
         <!-- Botón de compra y botones adicionales -->
@@ -113,7 +119,7 @@
               endif
             -%}
 
-            {%- render 'button', content: button_content, style: button_style, type: 'submit', form: product_form_id, disabled: button_disabled -%}
+            {%- render 'button', content: button_content, style: button_style, type: 'submit', form="{{ product_form_id }}", disabled: button_disabled -%}
           </buy-buttons>
         </div>
 
@@ -143,11 +149,12 @@
       </div>
 
       <buy-buttons class="buy-buttons" template="{{ product.template_suffix | escape }}" form="{{ product_form_id }}">
-        {%- render 'button', content: button_content, style: button_style, type: 'submit', form: product_form_id, disabled: button_disabled -%}
+        {%- render 'button', content: button_content, style: button_style, type: 'submit', form="{{ product_form_id }}", disabled: button_disabled -%}
       </buy-buttons>
     </product-sticky-bar>
   </product-rerender>
 {%- endif -%}
+
 
 
 {%- comment -%}
