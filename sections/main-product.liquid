@@ -74,19 +74,47 @@
 
         <!-- Metacampos (Material, Design, Craftsmanship, Features) justo después de la descripción y antes del botón de compra -->
         <div id="product-meta-fields" class="product-meta-fields">
-          {%- assign titles = "Material,Design,Craftsmanship,Features" | split: "," -%}
-          {%- assign contents = "
+          {%- assign metacampo_titles = "Material,Design,Craftsmanship,Features" | split: "," -%}
+          {%- assign metacampo_contenidos = "
             {{ product.metafields.custom.material }},
             {{ product.metafields.custom.design }},
             {{ product.metafields.custom.craftmanship }},
             {{ product.metafields.custom.features }}" | split: "," -%}
 
-          {%- for title in titles -%}
-            {%- assign content = contents[forloop.index0] | strip -%}
-            {%- if content != blank -%}
-              {%- render 'accordion', title: title, content: content, prose_content: true, size: 'lg' -%}
+          {%- for metacampo_title in metacampo_titles -%}
+            {%- assign metacampo_content = metacampo_contenidos[forloop.index0] | strip -%}
+            {%- if metacampo_content != blank -%}
+              {%- render 'accordion', title: metacampo_title, content: metacampo_content, prose_content: true, size: 'lg' -%}
             {%- endif -%}
           {%- endfor -%}
+        </div>
+
+        <!-- Botón de compra y botones adicionales -->
+        <div class="buy-buttons-section">
+          <buy-buttons class="buy-buttons" template="{{ product.template_suffix | escape }}" form="{{ product_form_id }}">
+            {%- liquid
+              assign button_disabled = false
+              assign button_style = 'solid'
+
+              if product.selected_or_first_available_variant == nil
+                assign button_disabled = true
+                assign button_style = 'outline'
+                assign button_content = 'product.general.unavailable_button' | t
+              elsif product.selected_or_first_available_variant.available == false
+                assign button_disabled = true
+                assign button_style = 'outline'
+                assign button_content = 'product.general.sold_out_button' | t
+              else
+                if product.template_suffix contains 'pre-order'
+                  assign button_content = 'product.general.pre_order_button' | t
+                else
+                  assign button_content = 'product.general.add_to_cart_button' | t
+                endif
+              endif
+            -%}
+
+            {%- render 'button', content: button_content, style: button_style, type: 'submit', form: product_form_id, disabled: button_disabled -%}
+          </buy-buttons>
         </div>
 
       </div>
@@ -115,27 +143,6 @@
       </div>
 
       <buy-buttons class="buy-buttons" template="{{ product.template_suffix | escape }}" form="{{ product_form_id }}">
-        {%- liquid
-          assign button_disabled = false
-          assign button_style = 'solid'
-
-          if product.selected_or_first_available_variant == nil
-            assign button_disabled = true
-            assign button_style = 'outline'
-            assign button_content = 'product.general.unavailable_button' | t
-          elsif product.selected_or_first_available_variant.available == false
-            assign button_disabled = true
-            assign button_style = 'outline'
-            assign button_content = 'product.general.sold_out_button' | t
-          else
-            if product.template_suffix contains 'pre-order'
-              assign button_content = 'product.general.pre_order_button' | t
-            else
-              assign button_content = 'product.general.add_to_cart_button' | t
-            endif
-          endif
-        -%}
-
         {%- render 'button', content: button_content, style: button_style, type: 'submit', form: product_form_id, disabled: button_disabled -%}
       </buy-buttons>
     </product-sticky-bar>
