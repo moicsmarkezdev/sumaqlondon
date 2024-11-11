@@ -85,15 +85,34 @@
                     {%- endif -%}
                   {%- endif -%}
 
+                <!-- Inicio de las secciones colapsables específicas -->
                 {%- when 'accordion' -%}
-                  {%- liquid
-                    assign accordion_title = block.settings.title | default: block.settings.page.title
-                    assign accordion_content = block.settings.page.content | default: block.settings.liquid | default: block.settings.content
+                  <!-- Material -->
+                  {%- assign accordion_title_material = 'Material' -%}
+                  {%- assign accordion_content_material = '100% Baby Alpaca' -%}
+                  {%- render 'accordion', title: accordion_title_material, content: accordion_content_material, size: 'lg', prose_content: true, block: block -%}
 
-                    if accordion_title != blank and accordion_content != blank
-                      render 'accordion', title: accordion_title, content: accordion_content, size: 'lg', prose_content: true, icon: block.settings.icon, custom_icon: block.settings.custom_icon, block: block
-                    endif
-                  -%}
+                  <!-- Design -->
+                  {%- assign accordion_title_design = 'Design' -%}
+                  {%- assign accordion_content_design = 'Embrace classic sophistication with this traditionally cut, full-length coat...' -%}
+                  {%- render 'accordion', title: accordion_title_design, content: accordion_content_design, size: 'lg', prose_content: true, block: block -%}
+
+                  <!-- Craftsmanship -->
+                  {%- assign accordion_title_craftsmanship = 'Craftsmanship' -%}
+                  {%- assign accordion_content_craftsmanship = 'This coat is handcrafted by Peruvian artisans using ethically sourced baby alpaca fiber...' -%}
+                  {%- render 'accordion', title: accordion_title_craftsmanship, content: accordion_content_craftsmanship, size: 'lg', prose_content: true, block: block -%}
+
+                  <!-- Features -->
+                  {%- assign accordion_title_features = 'Features' -%}
+                  {%- assign accordion_content_features = '
+                  <ul>
+                    <li>Classic Silhouette: Double-breasted with a belted waist for a flattering, structured fit.</li>
+                    <li>Elegant Details: Wide lapels, button closures, and adjustable cuffs add a polished finish.</li>
+                    <li>Versatility in Color: The rich brown hue gives it a grounded, sophisticated look.</li>
+                  </ul>
+                  ' -%}
+                  {%- render 'accordion', title: accordion_title_features, content: accordion_content_features, size: 'lg', prose_content: true, block: block -%}
+                <!-- Fin de las secciones colapsables específicas -->
 
                 {%- when 'complementary_products' -%}
                   {%- render 'complementary-products', product: product, block: block -%}
@@ -105,6 +124,7 @@
     </product-rerender>
   </div>
 </div>
+
 
 {%- if section.settings.show_sticky_add_to_cart and product.available -%}
   <product-rerender id="{{ product_form_id }}-sticky-bar" observe-form="{{ product_form_id }}">
