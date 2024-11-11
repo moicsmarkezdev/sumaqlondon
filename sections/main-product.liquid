@@ -64,64 +64,64 @@
           context: 'main_product' 
         -%}
 
-        {%- comment -%}On Prestige, some content may be on the left part below the product gallery{%- endcomment -%}
-        {%- if has_content_below_gallery -%}
-          <div id="product-extra-information" class="product-content-below-gallery empty:hidden scroll-margin-offset">
-            {%- for block in section.blocks -%}
-              {%- unless block.settings.show_below_gallery -%}
-                {%- continue -%}
-              {%- endunless -%}
+{%- comment -%}On Prestige, some content may be on the left part below the product gallery{%- endcomment -%}
+{%- if has_content_below_gallery -%}
+  <div id="product-extra-information" class="product-content-below-gallery empty:hidden scroll-margin-offset">
+    {%- for block in section.blocks -%}
+      {%- unless block.settings.show_below_gallery -%}
+        {%- continue -%}
+      {%- endunless -%}
 
-              {%- case block.type -%}
-                {%- when 'description' -%}
-                  {%- if product.description != blank -%}
-                    {%- if block.settings.collapse_content -%}
-                      {%- assign accordion_title = 'product.general.description' | t -%}
-                      {%- render 'accordion', title: accordion_title, content: product.description, prose_content: true, size: 'lg', block: block -%}
-                    {%- else -%}
-                      <div class="product-content-below-gallery__description prose">
-                        {{- product.description -}}
-                      </div>
-                    {%- endif -%}
-                  {%- endif -%}
+      {%- case block.type -%}
+        {%- when 'description' -%}
+          {%- if product.description != blank -%}
+            {%- if block.settings.collapse_content -%}
+              {%- assign accordion_title = 'product.general.description' | t -%}
+              {%- render 'accordion', title: accordion_title, content: product.description, prose_content: true, size: 'lg', block: block -%}
+            {%- else -%}
+              <div class="product-content-below-gallery__description prose">
+                {{- product.description -}}
+              </div>
+            {%- endif -%}
+          {%- endif -%}
 
-                <!-- Inicio de las secciones colapsables específicas -->
-                {%- when 'accordion' -%}
-                  <!-- Material -->
-                  {%- assign accordion_title_material = 'Material' -%}
-                  {%- assign accordion_content_material = product.metafields.custom.material -%}
-                  {%- if accordion_content_material != blank -%}
-                    {%- render 'accordion', title: accordion_title_material, content: accordion_content_material, size: 'lg', prose_content: true, block: block -%}
-                  {%- endif -%}
+        <!-- Inicio de las secciones colapsables específicas -->
+        {%- when 'accordion' -%}
+          <!-- Material -->
+          {%- assign accordion_title_material = 'Material' -%}
+          {%- assign accordion_content_material = product.metafields.custom.material -%}
+          {%- if accordion_content_material != blank -%}
+            {%- render 'accordion', title: accordion_title_material, content: accordion_content_material, size: 'lg', prose_content: true, block: block -%}
+          {%- endif -%}
 
-                  <!-- Design -->
-                  {%- assign accordion_title_design = 'Design' -%}
-                  {%- assign accordion_content_design = product.metafields.custom.design -%}
-                  {%- if accordion_content_design != blank -%}
-                    {%- render 'accordion', title: accordion_title_design, content: accordion_content_design, size: 'lg', prose_content: true, block: block -%}
-                  {%- endif -%}
+          <!-- Design -->
+          {%- assign accordion_title_design = 'Design' -%}
+          {%- assign accordion_content_design = product.metafields.custom.design -%}
+          {%- if accordion_content_design != blank -%}
+            {%- render 'accordion', title: accordion_title_design, content: accordion_content_design, size: 'lg', prose_content: true, block: block -%}
+          {%- endif -%}
 
-                  <!-- Craftsmanship -->
-                  {%- assign accordion_title_craftsmanship = 'Craftsmanship' -%}
-                  {%- assign accordion_content_craftsmanship = product.metafields.custom.craftsmanship -%}
-                  {%- if accordion_content_craftsmanship != blank -%}
-                    {%- render 'accordion', title: accordion_title_craftsmanship, content: accordion_content_craftsmanship, size: 'lg', prose_content: true, block: block -%}
-                  {%- endif -%}
+          <!-- Craftsmanship -->
+          {%- assign accordion_title_craftsmanship = 'Craftsmanship' -%}
+          {%- assign accordion_content_craftsmanship = product.metafields.custom.craftsmanship -%}
+          {%- if accordion_content_craftsmanship != blank -%}
+            {%- render 'accordion', title: accordion_title_craftsmanship, content: accordion_content_craftsmanship, size: 'lg', prose_content: true, block: block -%}
+          {%- endif -%}
 
-                  <!-- Features -->
-                  {%- assign accordion_title_features = 'Features' -%}
-                  {%- assign accordion_content_features = product.metafields.custom.features -%}
-                  {%- if accordion_content_features != blank -%}
-                    {%- render 'accordion', title: accordion_title_features, content: accordion_content_features, size: 'lg', prose_content: true, block: block -%}
-                  {%- endif -%}
-                <!-- Fin de las secciones colapsables específicas -->
+          <!-- Features -->
+          {%- assign accordion_title_features = 'Features' -%}
+          {%- assign accordion_content_features = product.metafields.custom.features -%}
+          {%- if accordion_content_features != blank -%}
+            {%- render 'accordion', title: accordion_title_features, content: accordion_content_features, size: 'lg', prose_content: true, block: block -%}
+          {%- endif -%}
+        <!-- Fin de las secciones colapsables específicas -->
 
-                {%- when 'complementary_products' -%}
-                  {%- render 'complementary-products', product: product, block: block -%}
-              {%- endcase -%}
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
+        {%- when 'complementary_products' -%}
+          {%- render 'complementary-products', product: product, block: block -%}
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+      {%- endif -%}
       </div>
     </product-rerender>
   </div>
