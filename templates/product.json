@@ -43,12 +43,12 @@
             "show_below_gallery": false
           }
         },
-        "accordion_8tyE8Y": {
+        "accordion_QUiRA8": {
           "type": "accordion",
           "settings": {
             "show_below_gallery": false,
             "icon": "none",
-            "title": "METAFIELDS - DESCRIPTION",
+            "title": "Title",
             "content": "<p>Share some content to your customers about your products.</p>",
             "liquid": "",
             "page": ""
@@ -97,7 +97,7 @@
         "payment_terms",
         "separator",
         "description",
-        "accordion_8tyE8Y",
+        "accordion_QUiRA8",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
