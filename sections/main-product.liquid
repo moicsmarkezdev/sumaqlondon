@@ -65,13 +65,13 @@
           context: 'main_product' 
         -%}
 
-        <!-- Contenido adicional (metacampos y descripción) debajo de product-info y antes del botón de compra -->
+        <!-- Contenido adicional (metacampos y descripción) -->
         <div id="product-extra-information" class="product-content-below-gallery empty:hidden scroll-margin-offset">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
 
               {%- when 'description' -%}
-                {%- if product.description != blank -%}
+                {%- if product.description != blank and block.settings.show_below_gallery == true -%}
                   {%- if block.settings.collapse_content -%}
                     {%- assign accordion_title = 'product.general.description' | t -%}
                     {%- render 'accordion', title: accordion_title, content: product.description, prose_content: true, size: 'lg', block: block -%}
@@ -194,6 +194,7 @@ quick buy information in a template, that will be extracted in JS, which ensures
     // Safari in private mode does not allow setting item, we silently fail
   }
 </script>
+
 
 {% schema %}
 {
