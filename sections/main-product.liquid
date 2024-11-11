@@ -71,7 +71,7 @@
             {%- case block.type -%}
 
               {%- when 'description' -%}
-                {%- if product.description != blank -%}
+                {%- if product.description != blank and block.settings.show_below_gallery == true -%}
                   {%- if block.settings.collapse_content -%}
                     {%- assign accordion_title = 'product.general.description' | t -%}
                     {%- render 'accordion', title: accordion_title, content: product.description, prose_content: true, size: 'lg', block: block -%}
