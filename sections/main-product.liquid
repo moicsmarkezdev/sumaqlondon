@@ -68,11 +68,8 @@
 {%- if has_content_below_gallery -%}
   <div id="product-extra-information" class="product-content-below-gallery empty:hidden scroll-margin-offset">
     {%- for block in section.blocks -%}
-      {%- unless block.settings.show_below_gallery -%}
-        {%- continue -%}
-      {%- endunless -%}
-
       {%- case block.type -%}
+
         {%- when 'description' -%}
           {%- if product.description != blank -%}
             {%- if block.settings.collapse_content -%}
@@ -85,7 +82,7 @@
             {%- endif -%}
           {%- endif -%}
 
-        <!-- Inicio de las secciones colapsables específicas -->
+        <!-- Secciones colapsables de metacampos específicas después de la descripción -->
         {%- when 'accordion' -%}
           <!-- Material -->
           {%- assign accordion_title_material = 'Material' -%}
@@ -114,14 +111,14 @@
           {%- if accordion_content_features != blank -%}
             {%- render 'accordion', title: accordion_title_features, content: accordion_content_features, size: 'lg', prose_content: true, block: block -%}
           {%- endif -%}
-        <!-- Fin de las secciones colapsables específicas -->
+        <!-- Fin de secciones colapsables específicas -->
 
         {%- when 'complementary_products' -%}
           {%- render 'complementary-products', product: product, block: block -%}
-      {%- endcase -%}
-    {%- endfor -%}
-  </div>
-      {%- endif -%}
+         {%- endcase -%}
+        {%- endfor -%}
+        </div>
+       {%- endif -%}
       </div>
     </product-rerender>
   </div>
