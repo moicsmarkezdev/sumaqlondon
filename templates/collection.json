@@ -12,8 +12,8 @@
     "collection-banner": {
       "type": "collection-banner",
       "settings": {
-        "color_scheme": "",
-        "image": "shopify://shop_images/Captura_de_pantalla_2024-11-13_a_la_s_8.28.43_p._m..png",
+        "color_scheme": "scheme-3",
+        "image": "shopify://shop_images/Captura_de_pantalla_2024-11-13_a_la_s_8.31.22_p._m..png",
         "mobile_image": "shopify://shop_images/Captura_de_pantalla_2024-11-13_a_la_s_8.28.43_p._m..png",
         "image_size": "auto",
         "allow_transparent_header": true,
