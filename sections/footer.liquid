@@ -2,45 +2,6 @@
   #shopify-section-{{ section.id }} {
     --footer-content-justify-items: {% if section.settings.blocks.size <= 2 %}start{% else %}space-between{% endif %};
   }
-
-  /* Centrar los enlaces de redes sociales */
-  .footer__social-media {
-    display: flex;
-    justify-content: center; /* Centrar los íconos horizontalmente */
-    align-items: center;
-    margin-top: 1px; /* Espacio superior reducido */
-  }
-
-  .footer__social-media a {
-    margin: 0 1px; /* Espacio reducido entre los íconos */
-  }
-
-  /* Reducir espacios entre bloques de contenido en el footer */
-  .footer__block-list {
-    display: flex;
-    justify-content: space-between;
-    gap: 1px; /* Ajustar según el espacio necesario entre secciones */
-    margin-bottom: 1px; /* Reducir espacio inferior */
-  }
-
-  /* Ajustes adicionales para reducir el espacio vertical en el footer */
-  .footer__block {
-    margin: 1px 0; /* Reducir el margen entre bloques individuales */
-  }
-
-  .footer__aside {
-    margin-top: 1px; /* Reducir espacio entre las redes sociales y el aside */
-    padding-top: 1px; /* Reducir padding en la parte superior */
-  }
-
-  .container, .footer__inner {
-    padding-top: 1px; /* Reducir padding superior general */
-    padding-bottom: 1px; /* Reducir padding inferior general */
-  }
-
-  .v-stack {
-    gap: 1px; /* Reducir espacio en stack vertical */
-  }
 </style>
 
 {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
@@ -170,9 +131,7 @@
       {%- endcomment -%}
 
       {%- if section.settings.show_social_media -%}
-        <div class="footer__social-media">
-          {%- render 'social-media', layout: 'list' -%}
-        </div>
+        {%- render 'social-media', layout: 'list' -%}
       {%- endif -%}
 
       {%- comment -%}
@@ -215,7 +174,6 @@
     </div>
   </div>
 </div>
-
 
 {% schema %}
 {
