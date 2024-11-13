@@ -2,6 +2,18 @@
   #shopify-section-{{ section.id }} {
     --footer-content-justify-items: {% if section.settings.blocks.size <= 2 %}start{% else %}space-between{% endif %};
   }
+
+  /* Centrar los enlaces de redes sociales */
+  .footer__social-media {
+    display: flex;
+    justify-content: center; /* Centrar los íconos horizontalmente */
+    align-items: center;
+    margin-top: 20px; /* Opcional: espacio superior */
+  }
+
+  .footer__social-media a {
+    margin: 0 10px; /* Espacio entre los íconos */
+  }
 </style>
 
 {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
@@ -131,7 +143,9 @@
       {%- endcomment -%}
 
       {%- if section.settings.show_social_media -%}
-        {%- render 'social-media', layout: 'list' -%}
+        <div class="footer__social-media">
+          {%- render 'social-media', layout: 'list' -%}
+        </div>
       {%- endif -%}
 
       {%- comment -%}
