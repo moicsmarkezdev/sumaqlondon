@@ -62,10 +62,10 @@
           "settings": {
             "show_payment_button": false,
             "show_gift_card_recipient": true,
-            "atc_button_background": "#722820",
-            "atc_button_text_color": "#ffffff",
-            "payment_button_background": "#722820",
-            "payment_button_text_color": ""
+            "atc_button_background": "#ffffff",
+            "atc_button_text_color": "#722820",
+            "payment_button_background": "#ffffff",
+            "payment_button_text_color": "#722820"
           }
         },
         "accordion_MnPWyw": {
@@ -140,7 +140,7 @@
         "complementary_products"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-3",
         "container_size": "lg",
         "product_info_size": 35,
         "show_sticky_add_to_cart": true,
