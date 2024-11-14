@@ -22,14 +22,15 @@
 -%}
 
 <style>
+  /* Configuración general del grid para desktop */
   #shopify-section-{{ section.id }} {
     display: grid;
-    grid-template-columns: 60% 40%; /* Galería al 60% y producto al 40% */
+    grid-template-columns: 60% 40%; /* Galería al 60% y info producto al 40% */
     gap: 20px;
   }
 
+  /* En pantallas pequeñas, vuelve a una sola columna */
   @media screen and (max-width: 999px) {
-    /* En pantallas pequeñas, vuelve a una sola columna */
     #shopify-section-{{ section.id }} {
       grid-template-columns: 1fr;
     }
@@ -156,7 +157,6 @@
     // Safari en modo privado no permite guardar, fallamos en silencio
   }
 </script>
-
 
 
 
