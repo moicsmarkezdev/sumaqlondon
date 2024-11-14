@@ -71,11 +71,44 @@
         "accordion_MnPWyw": {
           "type": "accordion",
           "settings": {
-            "show_below_gallery": true,
+            "show_below_gallery": false,
             "icon": "none",
-            "title": "Title",
-            "content": "<p>Share some content to your customers about your products.</p>",
-            "liquid": "",
+            "title": "Material",
+            "content": "",
+            "liquid": "{{ product.metafields.custom.material }}",
+            "page": ""
+          }
+        },
+        "accordion_PKx7Nr": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Design",
+            "content": "",
+            "liquid": "{{ product.metafields.custom.design }}",
+            "page": ""
+          }
+        },
+        "accordion_x7fqbY": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Craftsmanship",
+            "content": "",
+            "liquid": "{{ product.metafields.custom.craftsmanship }}",
+            "page": ""
+          }
+        },
+        "accordion_UmHwGC": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Features",
+            "content": "",
+            "liquid": "{{ product.metafields.custom.features }}",
             "page": ""
           }
         },
@@ -101,6 +134,9 @@
         "quantity_selector",
         "buy_buttons",
         "accordion_MnPWyw",
+        "accordion_PKx7Nr",
+        "accordion_x7fqbY",
+        "accordion_UmHwGC",
         "complementary_products"
       ],
       "settings": {
