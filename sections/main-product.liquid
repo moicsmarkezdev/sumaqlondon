@@ -23,35 +23,16 @@
 
 <style>
   #shopify-section-{{ section.id }} {
-    --product-grid: "product-gallery" "product-info" {% if has_content_below_gallery %}"product-content"{% endif %} / minmax(0, 1fr);
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr; /* Una sola columna para mobile */
   }
 
   @media screen and (min-width: 1000px) {
     #shopify-section-{{ section.id }} {
-      display: grid;
-      grid-template-areas: 
-        "product-gallery product-info";
-      grid-template-columns: 1fr minmax(300px, 500px); /* Ajuste dinámico de ancho */
-      column-gap: 20px;
-    }
-
-    /* Contenedor flex para mantener elementos en columna derecha */
-    .product {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between; /* Fija el contenido de product-info y metafields */
-      height: 100vh; /* Asegura que ocupe toda la altura disponible */
-      overflow-y: auto;
-    }
-
-    #product-info-{{ product.id }}-{{ section.id }} {
-      flex-grow: 1; /* Asegura que el contenido principal ocupe el espacio adecuado */
-    }
-
-    #product-metafields-{{ product.id }}-{{ section.id }} {
-      margin-top: 20px; /* Espacio entre el contenido y los metafields */
-      position: sticky;
-      bottom: 0; /* Fija los metafields al final de la columna derecha */
+      /* Vista de dos columnas en desktop */
+      grid-template-columns: minmax(0, 1fr) 400px; /* Columna derecha fija en 400px */
+      gap: 40px;
     }
   }
 </style>
@@ -62,7 +43,7 @@
 <div class="section-spacing section-spacing--tight color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }}">
   <div class="container {% unless section.settings.container_size == 'full' %}container--{{ section.settings.container_size }}{% endunless %}">
     <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
-      <div class="product">
+      <div class="product" style="grid-column: 1;">
         {%- if product.media.size > 0 -%}
           {%- render 'product-gallery',
               product: product,
@@ -74,7 +55,10 @@
               enable_image_zoom: section.settings.enable_image_zoom,
               max_image_zoom_level: section.settings.max_image_zoom_level -%}
         {%- endif -%}
+      </div>
 
+      <!-- Columna derecha para información del producto -->
+      <div id="product-info-content" style="grid-column: 2;">
         {%- render 'product-info', 
           product: product, 
           product_form_id: product_form_id,
@@ -83,8 +67,8 @@
           context: 'main_product' 
         -%}
 
-        <!-- Metafields Section -->
-        <div id="product-metafields-{{ product.id }}-{{ section.id }}" class="product-metafields">
+        <!-- Metafields Section, bajo la información del producto -->
+        <div id="product-metafields-{{ product.id }}-{{ section.id }}" class="product-metafields" style="margin-top: 20px;">
           {%- for metafield in product.metafields %}
             <div class="metafield-item">
               <strong>{{ metafield.title }}</strong>: {{ metafield.value }}
