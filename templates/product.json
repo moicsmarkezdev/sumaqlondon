@@ -96,9 +96,9 @@
           "settings": {
             "show_below_gallery": false,
             "icon": "none",
-            "title": "Title",
-            "content": "<p>Share some content to your customers about your products.</p>",
-            "liquid": "",
+            "title": "Craftsmanship",
+            "content": "",
+            "liquid": "{{ product.metafields.custom.craftsmanship }}",
             "page": ""
           }
         },
