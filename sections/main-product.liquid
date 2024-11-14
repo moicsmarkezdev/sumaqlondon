@@ -24,16 +24,19 @@
 <style>
   #shopify-section-{{ section.id }} {
     display: grid;
+    grid-template-areas: 
+      "product-gallery product-info"; /* Define las áreas de grid para desktop */
+    grid-template-columns: 60% 40%; /* Galería a la izquierda (60%), info producto a la derecha (40%) */
     gap: 20px;
-    grid-template-columns: 1fr; /* Mobile: una sola columna */
   }
 
-  @media screen and (min-width: 1000px) {
+  /* Mobile: una sola columna */
+  @media screen and (max-width: 999px) {
     #shopify-section-{{ section.id }} {
-      /* Desktop: Configuración de dos columnas con proporción fija */
-      grid-template-columns: 60% 40%; /* Ajuste de proporción */
-      gap: 40px; /* Espacio entre columnas */
-      align-items: start; /* Alineación de elementos al inicio */
+      grid-template-areas: 
+        "product-gallery"
+        "product-info";
+      grid-template-columns: 1fr;
     }
   }
 </style>
@@ -46,7 +49,7 @@
     <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
       
       <!-- Columna Izquierda: Galería de Imágenes -->
-      <div class="product-gallery-container" style="grid-column: 1;">
+      <div class="product-gallery-container" style="grid-area: product-gallery;">
         {%- if product.media.size > 0 -%}
           {%- render 'product-gallery',
               product: product,
@@ -61,7 +64,7 @@
       </div>
 
       <!-- Columna Derecha: Información del Producto y Metafields -->
-      <div id="product-info-content" style="grid-column: 2;">
+      <div id="product-info-content" style="grid-area: product-info;">
         {%- render 'product-info', 
           product: product, 
           product_form_id: product_form_id,
@@ -146,6 +149,7 @@
     // Safari en modo privado no permite guardar, fallamos en silencio
   }
 </script>
+
 
 
 {% schema %}
