@@ -80,6 +80,39 @@
             "page": ""
           }
         },
+        "accordion_4FNjm4": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Title",
+            "content": "<p>Share some content to your customers about your products.</p>",
+            "liquid": "",
+            "page": ""
+          }
+        },
+        "accordion_TUExxR": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Title",
+            "content": "<p>Share some content to your customers about your products.</p>",
+            "liquid": "",
+            "page": ""
+          }
+        },
+        "accordion_BVFWfc": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Title",
+            "content": "<p>Share some content to your customers about your products.</p>",
+            "liquid": "",
+            "page": ""
+          }
+        },
         "complementary_products": {
           "type": "complementary_products",
           "settings": {
@@ -102,6 +135,9 @@
         "quantity_selector",
         "buy_buttons",
         "accordion_kT3Qxg",
+        "accordion_4FNjm4",
+        "accordion_TUExxR",
+        "accordion_BVFWfc",
         "complementary_products"
       ],
       "settings": {
