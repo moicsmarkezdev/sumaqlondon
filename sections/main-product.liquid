@@ -25,14 +25,15 @@
   #shopify-section-{{ section.id }} {
     display: grid;
     gap: 20px;
-    grid-template-columns: 1fr; /* Una sola columna para mobile */
+    grid-template-columns: 1fr; /* Mobile: una sola columna */
   }
 
   @media screen and (min-width: 1000px) {
     #shopify-section-{{ section.id }} {
-      /* Vista de dos columnas en desktop */
-      grid-template-columns: minmax(0, 1fr) 400px; /* Columna derecha fija en 400px */
-      gap: 40px;
+      /* Desktop: Configuración de dos columnas con proporción fija */
+      grid-template-columns: 60% 40%; /* Ajuste de proporción */
+      gap: 40px; /* Espacio entre columnas */
+      align-items: start; /* Alineación de elementos al inicio */
     }
   }
 </style>
@@ -43,7 +44,9 @@
 <div class="section-spacing section-spacing--tight color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }}">
   <div class="container {% unless section.settings.container_size == 'full' %}container--{{ section.settings.container_size }}{% endunless %}">
     <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
-      <div class="product" style="grid-column: 1;">
+      
+      <!-- Columna Izquierda: Galería de Imágenes -->
+      <div class="product-gallery-container" style="grid-column: 1;">
         {%- if product.media.size > 0 -%}
           {%- render 'product-gallery',
               product: product,
@@ -57,7 +60,7 @@
         {%- endif -%}
       </div>
 
-      <!-- Columna derecha para información del producto -->
+      <!-- Columna Derecha: Información del Producto y Metafields -->
       <div id="product-info-content" style="grid-column: 2;">
         {%- render 'product-info', 
           product: product, 
@@ -67,7 +70,7 @@
           context: 'main_product' 
         -%}
 
-        <!-- Metafields Section, bajo la información del producto -->
+        <!-- Metafields debajo de la información del producto -->
         <div id="product-metafields-{{ product.id }}-{{ section.id }}" class="product-metafields" style="margin-top: 20px;">
           {%- for metafield in product.metafields %}
             <div class="metafield-item">
@@ -143,7 +146,6 @@
     // Safari en modo privado no permite guardar, fallamos en silencio
   }
 </script>
-
 
 
 {% schema %}
