@@ -31,19 +31,27 @@
       display: grid;
       grid-template-areas: 
         "product-gallery product-info";
-      /* Asegura que siempre tengamos dos columnas con proporciones ajustables */
-      grid-template-columns: 1fr minmax(300px, 500px); /* Ajusta el segundo valor (500px) según sea necesario */
-      column-gap: 20px; /* Espacio entre columnas */
+      grid-template-columns: 1fr minmax(300px, 500px); /* Ajuste dinámico de ancho */
+      column-gap: 20px;
     }
 
-    /* Asegurar que los contenidos en product-info y product-metafields se mantengan en la columna derecha */
-    #product-info-{{ product.id }}-{{ section.id }},
-    #product-metafields-{{ product.id }}-{{ section.id }} {
-      grid-area: product-info;
+    /* Contenedor flex para mantener elementos en columna derecha */
+    .product {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Fija el contenido de product-info y metafields */
+      height: 100vh; /* Asegura que ocupe toda la altura disponible */
+      overflow-y: auto;
+    }
+
+    #product-info-{{ product.id }}-{{ section.id }} {
+      flex-grow: 1; /* Asegura que el contenido principal ocupe el espacio adecuado */
     }
 
     #product-metafields-{{ product.id }}-{{ section.id }} {
-      margin-top: 20px; /* Espacio entre el botón de compra y los metafields */
+      margin-top: 20px; /* Espacio entre el contenido y los metafields */
+      position: sticky;
+      bottom: 0; /* Fija los metafields al final de la columna derecha */
     }
   }
 </style>
@@ -75,71 +83,14 @@
           context: 'main_product' 
         -%}
 
-        {%- comment -%}On Prestige, some content may be on the left part below the product gallery{%- endcomment -%}
-        {%- if has_content_below_gallery -%}
-          <div id="product-extra-information" class="product-content-below-gallery empty:hidden scroll-margin-offset">
-            {%- for block in section.blocks -%}
-              {%- unless block.settings.show_below_gallery -%}
-                {%- continue -%}
-              {%- endunless -%}
-
-              {%- case block.type -%}
-                {%- when 'description' -%}
-                  {%- if product.description != blank -%}
-                    {%- if block.settings.collapse_content -%}
-                      {%- assign accordion_title = 'product.general.description' | t -%}
-                      {%- render 'accordion', title: accordion_title, content: product.description, prose_content: true, size: 'lg', block: block -%}
-                    {%- else -%}
-                      <div class="product-content-below-gallery__description prose">
-                        {{- product.description -}}
-                      </div>
-                    {%- endif -%}
-                  {%- endif -%}
-
-                <!-- Inicio de las secciones colapsables específicas -->
-                {%- when 'accordion' -%}
-                  <!-- Material -->
-                  {%- assign accordion_title_material = 'Material' -%}
-                  {%- assign accordion_content_material = '100% Baby Alpaca' -%}
-                  {%- render 'accordion', title: accordion_title_material, content: accordion_content_material, size: 'lg', prose_content: true, block: block -%}
-
-                  <!-- Design -->
-                  {%- assign accordion_title_design = 'Design' -%}
-                  {%- assign accordion_content_design = 'Embrace classic sophistication with this traditionally cut, full-length coat...' -%}
-                  {%- render 'accordion', title: accordion_title_design, content: accordion_content_design, size: 'lg', prose_content: true, block: block -%}
-
-                  <!-- Craftsmanship -->
-                  {%- assign accordion_title_craftsmanship = 'Craftsmanship' -%}
-                  {%- assign accordion_content_craftsmanship = 'This coat is handcrafted by Peruvian artisans using ethically sourced baby alpaca fiber...' -%}
-                  {%- render 'accordion', title: accordion_title_craftsmanship, content: accordion_content_craftsmanship, size: 'lg', prose_content: true, block: block -%}
-
-                  <!-- Features -->
-                  {%- assign accordion_title_features = 'Features' -%}
-                  {%- assign accordion_content_features = '
-                  <ul>
-                    <li>Classic Silhouette: Double-breasted with a belted waist for a flattering, structured fit.</li>
-                    <li>Elegant Details: Wide lapels, button closures, and adjustable cuffs add a polished finish.</li>
-                    <li>Versatility in Color: The rich brown hue gives it a grounded, sophisticated look.</li>
-                  </ul>
-                  ' -%}
-                  {%- render 'accordion', title: accordion_title_features, content: accordion_content_features, size: 'lg', prose_content: true, block: block -%}
-                <!-- Fin de las secciones colapsables específicas -->
-
-                {%- when 'complementary_products' -%}
-                  {%- render 'complementary-products', product: product, block: block -%}
-              {%- endcase -%}
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
-      </div>
-
-      <!-- Metafields Section -->
-      <div id="product-metafields-{{ product.id }}-{{ section.id }}" class="product-metafields">
-        {%- for metafield in product.metafields %}
-          <div class="metafield-item">
-            <strong>{{ metafield.title }}</strong>: {{ metafield.value }}
-          </div>
-        {%- endfor -%}
+        <!-- Metafields Section -->
+        <div id="product-metafields-{{ product.id }}-{{ section.id }}" class="product-metafields">
+          {%- for metafield in product.metafields %}
+            <div class="metafield-item">
+              <strong>{{ metafield.title }}</strong>: {{ metafield.value }}
+            </div>
+          {%- endfor -%}
+        </div>
       </div>
     </product-rerender>
   </div>
@@ -208,6 +159,7 @@
     // Safari en modo privado no permite guardar, fallamos en silencio
   }
 </script>
+
 
 
 {% schema %}
