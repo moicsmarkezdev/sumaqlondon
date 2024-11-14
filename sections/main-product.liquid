@@ -1,50 +1,48 @@
-{%- liquid
-  assign has_content_below_gallery = false
+{% liquid %}
+{% assign has_content_below_gallery = false %}
 
-  for block in section.blocks
-    if block.type == 'complementary_products'
-      assign has_content_below_gallery = true
-      break
-    endif
+{% for block in section.blocks %}
+  {% if block.type == 'complementary_products' %}
+    {% assign has_content_below_gallery = true %}
+    {% break %}
+  {% endif %}
 
-    unless block.settings.show_below_gallery
-      continue
-    endunless
+  {% unless block.settings.show_below_gallery %}
+    {% continue %}
+  {% endunless %}
+{% endfor %}
 
-    if block.type == 'accordion'
-      if block.settings.title != blank and block.settings.content != blank
-        assign has_content_below_gallery = true
-        break
-      elsif block.settings.liquid != blank
-        assign has_content_below_gallery = true
-        break
-      elsif block.settings.page.content != blank
-        assign has_content_below_gallery = true
-        break
-      endif
-    elsif block.type == 'description' and product.description != blank
-      assign has_content_below_gallery = true
-      break
-    endif
-  endfor
--%}
+{%- comment -%}
+Configuración de contenido para bloques accordion y description.
+Esto asegura que se usen los metafields correspondientes en cada bloque de acordeón.
+{%- endcomment -%}
+{% for block in section.blocks %}
+  {% if block.type == 'accordion' or block.type == 'description' %}
+    {% assign accordion_title = product.metafields.custom[block.settings.metafield_title] | default: "Título predeterminado" %}
+    {% assign accordion_content = product.metafields.custom[block.settings.metafield_content] | default: "Contenido predeterminado" %}
+    
+    {% if accordion_title != blank and accordion_content != blank %}
+      {% assign has_content_below_gallery = true %}
+      {% break %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
 
 <style>
   #shopify-section-{{ section.id }} {
-    --product-grid: "product-gallery" "product-info" {% if has_content_below_gallery %}"product-content"{% endif %} / minmax(0, 1fr);
-  }
-
-  @media screen and (min-width: 1000px) {
-    #shopify-section-{{ section.id }} {
-      {%- if has_content_below_gallery -%}
-        --product-grid: "product-gallery product-info" auto "product-content product-info" minmax(0, 1fr) / minmax(0, {{ 100.0 | minus: section.settings.product_info_size | divided_by: 100.0 }}fr) minmax(0, {{ section.settings.product_info_size | divided_by: 100.0 }}fr);
-      {%- else -%}
-        --product-grid: "product-gallery product-info" / minmax(0, {{ 100.0 | minus: section.settings.product_info_size | divided_by: 100.0 }}fr) minmax(0, {{ section.settings.product_info_size | divided_by: 100.0 }}fr);
-      {%- endif -%}
-    }
+    --product-grid: "product-gallery" "product-info" {% if has_content_below_gallery %} "product-content" {% endif %} / minmax(0, 1fr);
   }
 </style>
 
+@media screen and (min-width: 1000px) {
+  #shopify-section-{{ section.id }} {
+    {% if has_content_below_gallery %}
+      --product-grid: "product-gallery product-info" auto "product-content product-info" minmax(0, 1fr) / minmax(0, {{ 100.0 | minus: section.settings.product_info_size | divided_by: 100.0 }}fr) minmax(0, {{ section.settings.product_info_size | divided_by: 100.0 }}fr);
+    {% else %}
+      --product-grid: "product-gallery product-info" / minmax(0, {{ 100.0 | minus: section.settings.product_info_size | divided_by: 100.0 }}fr) minmax(0, {{ section.settings.product_info_size | divided_by: 100.0 }}fr);
+    {% endif %}
+  }
+}
 
 {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
 {%- capture product_form_id -%}product-form-main-{{ product.id }}-{{ section.id }}{%- endcapture -%}
