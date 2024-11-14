@@ -11,9 +11,17 @@
       continue
     endunless
 
-    if block.type == 'accordion' and block.settings.title != blank and block.settings.content != blank or block.settings.liquid != blank or block.settings.page.content != blank
-      assign has_content_below_gallery = true
-      break
+    if block.type == 'accordion'
+      if block.settings.title != blank and block.settings.content != blank
+        assign has_content_below_gallery = true
+        break
+      elsif block.settings.liquid != blank
+        assign has_content_below_gallery = true
+        break
+      elsif block.settings.page.content != blank
+        assign has_content_below_gallery = true
+        break
+      endif
     elsif block.type == 'description' and product.description != blank
       assign has_content_below_gallery = true
       break
@@ -36,6 +44,7 @@
     }
   }
 </style>
+
 
 {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
 {%- capture product_form_id -%}product-form-main-{{ product.id }}-{{ section.id }}{%- endcapture -%}
