@@ -22,39 +22,28 @@
 -%}
 
 <style>
-  /* Configuración del grid para desktop */
   #shopify-section-{{ section.id }} {
-    display: grid;
-    grid-template-columns: 60% 40%; /* Galería en 60% e información en 40% */
-    gap: 20px;
+    --product-grid: "product-gallery" "product-info" {% if has_content_below_gallery %}"product-content"{% endif %} / minmax(0, 1fr);
   }
 
-  /* En pantallas pequeñas (mobile) vuelve a una sola columna */
-  @media screen and (max-width: 999px) {
+  @media screen and (min-width: 1000px) {
     #shopify-section-{{ section.id }} {
-      grid-template-columns: 1fr;
+      {%- if has_content_below_gallery -%}
+        --product-grid: "product-gallery product-info" auto "product-content product-info" minmax(0, 1fr) / minmax(0, {{ 100.0 | minus: section.settings.product_info_size | divided_by: 100.0 }}fr) minmax(0, {{ section.settings.product_info_size | divided_by: 100.0 }}fr);
+      {%- else -%}
+        --product-grid: "product-gallery product-info" / minmax(0, {{ 100.0 | minus: section.settings.product_info_size | divided_by: 100.0 }}fr) minmax(0, {{ section.settings.product_info_size | divided_by: 100.0 }}fr);
+      {%- endif -%}
     }
-  }
-
-  /* Contenedor de la galería en la columna izquierda */
-  .product-gallery-container {
-    grid-column: 1;
-  }
-
-  /* Contenedor de información en la columna derecha */
-  .product-info-container {
-    grid-column: 2;
-    display: flex;
-    flex-direction: column;
   }
 </style>
 
-<div class="section-spacing section-spacing--tight color-scheme color-scheme--{{ section.settings.color_scheme.id }}">
+{%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
+{%- capture product_form_id -%}product-form-main-{{ product.id }}-{{ section.id }}{%- endcapture -%}
+
+<div class="section-spacing section-spacing--tight color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }}">
   <div class="container {% unless section.settings.container_size == 'full' %}container--{{ section.settings.container_size }}{% endunless %}">
     <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
-      
-      <!-- Galería de imágenes en la columna izquierda -->
-      <div class="product-gallery-container">
+      <div class="product">
         {%- if product.media.size > 0 -%}
           {%- render 'product-gallery',
               product: product,
@@ -66,10 +55,7 @@
               enable_image_zoom: section.settings.enable_image_zoom,
               max_image_zoom_level: section.settings.max_image_zoom_level -%}
         {%- endif -%}
-      </div>
 
-      <!-- Información del producto en la columna derecha -->
-      <div class="product-info-container">
         {%- render 'product-info', 
           product: product, 
           product_form_id: product_form_id,
@@ -78,19 +64,66 @@
           context: 'main_product' 
         -%}
 
-        <!-- Metafields debajo de la información principal -->
-        <div id="product-metafields-{{ product.id }}-{{ section.id }}" class="product-metafields" style="margin-top: 20px;">
-          {%- for metafield in product.metafields %}
-            <div class="metafield-item">
-              <strong>{{ metafield.title }}</strong>: {{ metafield.value }}
-            </div>
-          {%- endfor -%}
-        </div>
+        {%- comment -%}On Prestige, some content may be on the left part below the product gallery{%- endcomment -%}
+        {%- if has_content_below_gallery -%}
+          <div id="product-extra-information" class="product-content-below-gallery empty:hidden scroll-margin-offset">
+            {%- for block in section.blocks -%}
+              {%- unless block.settings.show_below_gallery -%}
+                {%- continue -%}
+              {%- endunless -%}
+
+              {%- case block.type -%}
+                {%- when 'description' -%}
+                  {%- if product.description != blank -%}
+                    {%- if block.settings.collapse_content -%}
+                      {%- assign accordion_title = 'product.general.description' | t -%}
+                      {%- render 'accordion', title: accordion_title, content: product.description, prose_content: true, size: 'lg', block: block -%}
+                    {%- else -%}
+                      <div class="product-content-below-gallery__description prose">
+                        {{- product.description -}}
+                      </div>
+                    {%- endif -%}
+                  {%- endif -%}
+
+                <!-- Inicio de las secciones colapsables específicas -->
+                {%- when 'accordion' -%}
+                  <!-- Material -->
+                  {%- assign accordion_title_material = 'Material' -%}
+                  {%- assign accordion_content_material = '100% Baby Alpaca' -%}
+                  {%- render 'accordion', title: accordion_title_material, content: accordion_content_material, size: 'lg', prose_content: true, block: block -%}
+
+                  <!-- Design -->
+                  {%- assign accordion_title_design = 'Design' -%}
+                  {%- assign accordion_content_design = 'Embrace classic sophistication with this traditionally cut, full-length coat...' -%}
+                  {%- render 'accordion', title: accordion_title_design, content: accordion_content_design, size: 'lg', prose_content: true, block: block -%}
+
+                  <!-- Craftsmanship -->
+                  {%- assign accordion_title_craftsmanship = 'Craftsmanship' -%}
+                  {%- assign accordion_content_craftsmanship = 'This coat is handcrafted by Peruvian artisans using ethically sourced baby alpaca fiber...' -%}
+                  {%- render 'accordion', title: accordion_title_craftsmanship, content: accordion_content_craftsmanship, size: 'lg', prose_content: true, block: block -%}
+
+                  <!-- Features -->
+                  {%- assign accordion_title_features = 'Features' -%}
+                  {%- assign accordion_content_features = '
+                  <ul>
+                    <li>Classic Silhouette: Double-breasted with a belted waist for a flattering, structured fit.</li>
+                    <li>Elegant Details: Wide lapels, button closures, and adjustable cuffs add a polished finish.</li>
+                    <li>Versatility in Color: The rich brown hue gives it a grounded, sophisticated look.</li>
+                  </ul>
+                  ' -%}
+                  {%- render 'accordion', title: accordion_title_features, content: accordion_content_features, size: 'lg', prose_content: true, block: block -%}
+                <!-- Fin de las secciones colapsables específicas -->
+
+                {%- when 'complementary_products' -%}
+                  {%- render 'complementary-products', product: product, block: block -%}
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
       </div>
     </product-rerender>
   </div>
 </div>
-
 
 {%- if section.settings.show_sticky_add_to_cart and product.available -%}
   <product-rerender id="{{ product_form_id }}-sticky-bar" observe-form="{{ product_form_id }}">
