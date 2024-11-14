@@ -109,7 +109,7 @@
             "icon": "none",
             "title": "Features",
             "content": "",
-            "liquid": "{{ product.metafields.custom.features }}",
+            "liquid": "<ul>\n  {% assign features_items = product.metafields.custom.features | split: '.' %}\n  {% for item in features_items %}\n    {% if item != blank %}\n      <li>{{ item | strip }}</li>\n    {% endif %}\n  {% endfor %}\n</ul>",
             "page": ""
           }
         },
