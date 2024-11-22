@@ -1,11 +1,71 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-not-found",
-      "settings": {}
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-2",
+        "link": ""
+      }
+    },
+    "image_with_text_overlay_PWkLYG": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_qDHKQt": {
+          "type": "heading",
+          "settings": {
+            "text": "404",
+            "heading_tag": "h4"
+          }
+        },
+        "richtext_7yB73w": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We could not find the page you were looking for. Please use the navigation or the button below to go back to our website.</p>"
+          }
+        },
+        "button_MU66XD": {
+          "type": "button",
+          "settings": {
+            "style": "solid",
+            "text": "CONTIUE SHOPPING",
+            "url": "https://sumaqlondon.com",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_qDHKQt",
+        "richtext_7yB73w",
+        "button_MU66XD"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "image_size": "auto",
+        "image": "shopify://shop_images/Captura_de_pantalla_2024-11-05_a_la_s_6.04.45_p._m..png",
+        "allow_transparent_header": false,
+        "reveal_on_scroll": true,
+        "remove_vertical_spacing": true,
+        "content_width": "md",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "overlay_color": "#ffffff",
+        "overlay_opacity": 45
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "image_with_text_overlay_PWkLYG"
   ]
 }
