@@ -1,11 +1,86 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-list-collections",
-      "settings": {}
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "show_title": true,
+        "collections": [],
+        "collections_per_row_mobile": "1",
+        "collections_per_row_desktop": 3,
+        "image_size": "auto",
+        "content_position": "place-self-end-start text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "rich_text_k7HmPw": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_J9reV3": {
+          "type": "subheading",
+          "settings": {
+            "text": "Deep dive"
+          }
+        },
+        "heading_QB387D": {
+          "type": "heading",
+          "settings": {
+            "text": "Manifiesto Sumaq",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_ymbxdV": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>En Sumaq, donde la herencia se encuentra con la gracia moderna. Cada prenda es un tributo a la artesanía peruana y a la riqueza de la cultura inca. Confeccionadas con la más fina alpaca de la Ciudad Blanca, nuestras piezas trascienden para convertirse en tesoros atemporales.</p><p>Nuestra visión está profundamente inspirada por la cosmovisión andina, que celebra un mundo vivo y en equilibrio, el principio del ayni, la reciprocidad, la tierra y el arte de crear. Este enfoque, heredado de la sabiduría ancestral, se refleja en la dedicación con la que transformamos cada fibra en una pieza de lujo, respetando tanto el pasado como el</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_J9reV3",
+        "heading_QB387D",
+        "richtext_ymbxdV"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": true,
+        "content_width": "sm",
+        "text_position": "center",
+        "remove_vertical_spacing": false
+      }
+    },
+    "image_with_text_overlay_GEBUiX": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "color_scheme": "",
+        "image_size": "auto",
+        "image": "shopify://shop_images/Captura_de_pantalla_2024-11-13_a_la_s_8.26.38_p._m..png",
+        "allow_transparent_header": false,
+        "reveal_on_scroll": true,
+        "remove_vertical_spacing": true,
+        "content_width": "md",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "rich_text_k7HmPw",
+    "image_with_text_overlay_GEBUiX"
   ]
 }
