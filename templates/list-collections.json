@@ -61,6 +61,62 @@
         "remove_vertical_spacing": false
       }
     },
+    "media_grid_KeAeUM": {
+      "type": "media-grid",
+      "blocks": {
+        "image_CxW43B": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/Captura_de_pantalla_2024-11-05_a_la_s_6.04.45_p._m..png",
+            "column_count": "4",
+            "row_count": 1,
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_text": "",
+            "link_url": "",
+            "link_style": "link",
+            "text_position": "place-self-center text-center",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_JgkLGh": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/Captura_de_pantalla_2024-11-13_a_la_s_8.26.59_p._m..png",
+            "column_count": "4",
+            "row_count": 1,
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_text": "",
+            "link_url": "",
+            "link_style": "link",
+            "text_position": "place-self-center text-center",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_CxW43B",
+        "image_JgkLGh"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "separate_section_with_border": true,
+        "desktop_row_height": 290,
+        "mobile_row_height": 180,
+        "section_width": "lg",
+        "spacing": "md",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
     "image_with_text_overlay_GEBUiX": {
       "type": "image-with-text-overlay",
       "settings": {
@@ -81,6 +137,7 @@
   "order": [
     "main",
     "rich_text_k7HmPw",
+    "media_grid_KeAeUM",
     "image_with_text_overlay_GEBUiX"
   ]
 }
