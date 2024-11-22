@@ -64,7 +64,7 @@
     "image_with_text_overlay_GEBUiX": {
       "type": "image-with-text-overlay",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "image_size": "auto",
         "image": "shopify://shop_images/Captura_de_pantalla_2024-11-13_a_la_s_8.26.38_p._m..png",
         "allow_transparent_header": false,
@@ -73,8 +73,8 @@
         "content_width": "md",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "overlay_color": "#ffffff",
+        "overlay_opacity": 0
       }
     }
   },
