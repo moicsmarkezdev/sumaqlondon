@@ -39,32 +39,6 @@
             "gradient_overlay": "linear-gradient(180deg, rgba(54, 54, 54, 0.2), rgba(4, 4, 4, 0.65) 100%)"
           }
         },
-        "slide-2": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "subheading": "Tell your story",
-            "title": "Image slide",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "content_max_width": 780,
-            "button_1_text": "",
-            "button_1_link": "",
-            "button_1_style": "solid",
-            "button_1_background": "#ffffff",
-            "button_1_text_color": "#000000",
-            "button_2_text": "",
-            "button_2_link": "",
-            "button_2_style": "outline",
-            "button_2_background": "#ffffff",
-            "button_2_text_color": "#000000",
-            "background": "",
-            "background_opacity": 50,
-            "text_color": "#ffffff",
-            "border_color": "",
-            "gradient_overlay": "linear-gradient(180deg, rgba(54, 54, 54, 0.2) 0%, rgba(4, 4, 4, 0.65) 100%)"
-          }
-        },
         "video_AirmA8": {
           "type": "video",
           "disabled": true,
@@ -96,7 +70,6 @@
       },
       "block_order": [
         "slide-1",
-        "slide-2",
         "video_AirmA8"
       ],
       "settings": {
@@ -365,7 +338,7 @@
         "item-2": {
           "type": "image_with_text",
           "settings": {
-            "image": "shopify://shop_images/Captura_de_pantalla_2024-11-10_a_la_s_7.07.15_p._m..png",
+            "image": "shopify://shop_images/Gris_-_texto_home.jpg",
             "subheading": "",
             "title": "#1",
             "content": "<p>En Este contenido se puede hablar de los procesos de producción o un poco más de los valores de la marca</p>",
@@ -377,7 +350,7 @@
         "item-1": {
           "type": "image_with_text",
           "settings": {
-            "image": "shopify://shop_images/Captura_de_pantalla_2024-11-10_a_la_s_7.06.57_p._m..png",
+            "image": "shopify://shop_images/burgunduy_-_texto_home.jpg",
             "subheading": "",
             "title": "#2",
             "content": "<p>En Este contenido se puede hablar de los procesos de producción o un poco más de los valores de la marca</p>",
@@ -389,7 +362,7 @@
         "item-3": {
           "type": "image_with_text",
           "settings": {
-            "image": "shopify://shop_images/Captura_de_pantalla_2024-11-10_a_la_s_7.07.20_p._m..png",
+            "image": "shopify://shop_images/beige_-_abierto_texto_home.jpg",
             "subheading": "",
             "title": "#3",
             "content": "<p>En Este contenido se puede hablar de los procesos de producción o un poco más de los valores de la marca</p>",
