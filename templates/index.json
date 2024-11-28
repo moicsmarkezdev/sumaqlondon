@@ -15,13 +15,13 @@
         "slide-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Captura_de_pantalla_2024-11-05_a_la_s_6.00.01_p._m..png",
-            "mobile_image": "shopify://shop_images/Mobile_Sumaq.png",
+            "image": "shopify://shop_images/banner_sumaq.jpg",
+            "mobile_image": "shopify://shop_images/banner_mobile_sumaq.jpg",
             "subheading": "<em>Where heritage meets modern grace</em>",
             "title": "",
             "mobile_text_position": "place-self-end-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "content_max_width": 900,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "content_max_width": 980,
             "button_1_text": "",
             "button_1_link": "",
             "button_1_style": "solid",
