@@ -20,26 +20,6 @@
     },
     "contact-form": {
       "type": "contact",
-      "blocks": {
-        "dropdown_M7bF6Q": {
-          "type": "dropdown",
-          "settings": {
-            "title": "Custom field",
-            "values": "value 1, value 2, value 3"
-          }
-        },
-        "dropdown_LtzGp9": {
-          "type": "dropdown",
-          "settings": {
-            "title": "Custom field",
-            "values": "value 1, value 2, value 3"
-          }
-        }
-      },
-      "block_order": [
-        "dropdown_M7bF6Q",
-        "dropdown_LtzGp9"
-      ],
       "settings": {
         "color_scheme": "scheme-2",
         "separate_section_with_border": true,
