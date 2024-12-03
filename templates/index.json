@@ -370,12 +370,25 @@
             "link_url": "",
             "link_style": "solid"
           }
+        },
+        "image_with_text_DrnPVT": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/Gris_-_texto_home_b2fa52e4-aa08-48a6-97a3-0839f079e4ea.jpg",
+            "subheading": "",
+            "title": "Quality",
+            "content": "<p>The brand offers luxury garments made with high-quality Peruvian alpaca, designed to be durable and heirloom-worthy pieces.</p>",
+            "link_text": "",
+            "link_url": "",
+            "link_style": "solid"
+          }
         }
       },
       "block_order": [
         "item-2",
         "item-1",
-        "item-3"
+        "item-3",
+        "image_with_text_DrnPVT"
       ],
       "settings": {
         "color_scheme": "",
