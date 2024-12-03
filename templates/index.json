@@ -340,8 +340,8 @@
           "settings": {
             "image": "shopify://shop_images/Gris_-_texto_home.jpg",
             "subheading": "",
-            "title": "#1",
-            "content": "<p>En Este contenido se puede hablar de los procesos de producción o un poco más de los valores de la marca</p>",
+            "title": "Quality",
+            "content": "<p>The brand offers luxury garments made with high-quality Peruvian alpaca, designed to be durable and heirloom-worthy pieces.</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "solid"
@@ -352,8 +352,8 @@
           "settings": {
             "image": "shopify://shop_images/burgunduy_-_texto_home.jpg",
             "subheading": "",
-            "title": "#2",
-            "content": "<p>En Este contenido se puede hablar de los procesos de producción o un poco más de los valores de la marca</p>",
+            "title": "Cultural Connection",
+            "content": "<p>Inspired by Inca heritage and Peruvian culture, Sumaq aims to tell a story of legacy rooted in luxury and authenticity.</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "solid"
@@ -364,8 +364,8 @@
           "settings": {
             "image": "shopify://shop_images/beige_-_abierto_texto_home.jpg",
             "subheading": "",
-            "title": "#3",
-            "content": "<p>En Este contenido se puede hablar de los procesos de producción o un poco más de los valores de la marca</p>",
+            "title": "Sustainability",
+            "content": "<p>Positioned as a brand committed to sustainability and fair trade, it prioritizes ethical practices in its production.</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "solid"
