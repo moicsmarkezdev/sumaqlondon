@@ -95,7 +95,7 @@
           "type": "text",
           "settings": {
             "title": "Sumaq",
-            "content": "<p>Use this text area to tell your customers about your brand and vision.....</p>",
+            "content": "<p><strong>Sumaq stands for timeless beauty, slow fashion and women’s empowerment.</strong> Designed to be lived, loved and passed on.<br/></p>",
             "enable_follow_on_shop": true
           }
         },

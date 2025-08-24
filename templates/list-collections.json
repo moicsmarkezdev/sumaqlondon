@@ -44,7 +44,7 @@
         "richtext_ymbxdV": {
           "type": "richtext",
           "settings": {
-            "content": "<p>En Sumaq, donde la herencia se encuentra con la gracia moderna. Cada prenda es un tributo a la artesanía peruana y a la riqueza de la cultura inca. Confeccionadas con la más fina alpaca de la Ciudad Blanca, nuestras piezas trascienden para convertirse en tesoros atemporales.</p><p>Nuestra visión está profundamente inspirada por la cosmovisión andina, que celebra un mundo vivo y en equilibrio, el principio del ayni, la reciprocidad, la tierra y el arte de crear. Este enfoque, heredado de la sabiduría ancestral, se refleja en la dedicación con la que transformamos cada fibra en una pieza de lujo, respetando tanto el pasado como el</p>"
+            "content": "<p>At SUMAQ Atelier, every piece begins with vision and discipline. We do not create for seasons or trends, but for women who seek presence, elegance, and strength.</p><p>Our atelier in Peru is directed and overseen by women who believe in precision. Every seam, every shoulder, every drape is considered with care. This is not mass production. It is creation with intention, timeless coats designed to endure, elevate, and empower.</p>"
           }
         }
       },
@@ -68,7 +68,7 @@
           "type": "image",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/Captura_de_pantalla_2024-11-05_a_la_s_6.04.45_p._m..png",
+            "image": "shopify://shop_images/Sumaq_Purpose.jpg",
             "column_count": "6",
             "row_count": 1,
             "title": "",
@@ -86,7 +86,7 @@
           "type": "image",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/Captura_de_pantalla_2024-11-13_a_la_s_8.26.59_p._m..png",
+            "image": "shopify://shop_images/Sumaq_Purpuse_2.jpg",
             "column_count": "6",
             "row_count": 1,
             "title": "",
@@ -117,64 +117,150 @@
         "content": ""
       }
     },
-    "image_with_text_overlay_GEBUiX": {
-      "type": "image-with-text-overlay",
-      "settings": {
-        "color_scheme": "scheme-2",
-        "image_size": "auto",
-        "image": "shopify://shop_images/Captura_de_pantalla_2024-11-13_a_la_s_8.26.38_p._m..png",
-        "allow_transparent_header": false,
-        "reveal_on_scroll": false,
-        "remove_vertical_spacing": true,
-        "content_width": "md",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "overlay_color": "#ffffff",
-        "overlay_opacity": 0
-      }
-    },
-    "image_with_text_overlay_bbXwC4": {
-      "type": "image-with-text-overlay",
-      "settings": {
-        "color_scheme": "",
-        "image_size": "auto",
-        "image": "shopify://shop_images/Captura_de_pantalla_2024-11-13_a_la_s_8.26.23_p._m..png",
-        "allow_transparent_header": false,
-        "reveal_on_scroll": true,
-        "remove_vertical_spacing": true,
-        "content_width": "md",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
-      }
-    },
-    "image_with_text_block_aLGArR": {
-      "type": "image-with-text-block",
+    "rich_text_N4VBwB": {
+      "type": "rich-text",
       "blocks": {
-        "subheading_LcFwkT": {
-          "type": "subheading",
+        "heading_YfMptN": {
+          "type": "heading",
           "settings": {
-            "text": "Quality"
+            "text": "SUMAQ Atelier",
+            "heading_tag": "h1"
           }
         },
-        "richtext_BajCQj": {
+        "richtext_KimjE7": {
           "type": "richtext",
           "settings": {
-            "content": "<p>La marca ofrece prendas de lujo hechas con alpaca peruana de alta calidad, concebidas para ser piezas duraderas y heredables.</p>"
+            "content": "<p>Timeless coats, designed with precision, created for women who transcend trends.</p>"
           }
         }
       },
       "block_order": [
-        "subheading_LcFwkT",
-        "richtext_BajCQj"
+        "heading_YfMptN",
+        "richtext_KimjE7"
       ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": true,
+        "content_width": "sm",
+        "text_position": "center",
+        "remove_vertical_spacing": false
+      }
+    },
+    "image_with_text_i9FbtA": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_PrW97n": {
+          "type": "subheading",
+          "settings": {
+            "text": "PROCESS"
+          }
+        },
+        "heading_re9Gct": {
+          "type": "heading",
+          "settings": {
+            "text": "VISION",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_be7zRg": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Each design begins as a statement of empowerment. We imagine garments that project confidence and presence,<strong> created by women for women.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_PrW97n",
+        "heading_re9Gct",
+        "richtext_be7zRg"
+      ],
+      "name": "t:sections.image_with_text.presets.image_with_text.name",
       "settings": {
         "color_scheme": "",
-        "image_size": "lg",
-        "image": "shopify://shop_images/Captura_de_pantalla_2024-11-22_a_la_s_6.45.47_p._m..png",
+        "separate_section_with_border": true,
+        "image": "shopify://shop_images/banner_mobile_sumaq.jpg",
+        "reveal_on_scroll": true,
+        "image_position": "start",
         "content_width": "sm",
-        "enable_parallax": true,
+        "remove_vertical_spacing": true
+      }
+    },
+    "image_with_text_gwtKLU": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_Xg36hM": {
+          "type": "subheading",
+          "settings": {
+            "text": "PROCESS"
+          }
+        },
+        "heading_yhf76Q": {
+          "type": "heading",
+          "settings": {
+            "text": "Heritage",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_anE6tF": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Inspired by the legacy of the Incas and the Quechua language. Our silhouettes of oversized shoulders and architectural lines carry the dignity, elegance, and freedom of Andean tradition into modern life.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_Xg36hM",
+        "heading_yhf76Q",
+        "richtext_anE6tF"
+      ],
+      "name": "t:sections.image_with_text.presets.image_with_text.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "image": "shopify://shop_images/1_1.jpg",
+        "reveal_on_scroll": true,
+        "image_position": "end",
+        "content_width": "sm",
+        "remove_vertical_spacing": true
+      }
+    },
+    "image_with_text_wyrt76": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_ecL3m3": {
+          "type": "subheading",
+          "settings": {
+            "text": "PROCESS"
+          }
+        },
+        "heading_Tm4raT": {
+          "type": "heading",
+          "settings": {
+            "text": "Creation",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_dd8XTp": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>In our atelier, noble fibers are transformed into modern heirlooms. We source baby alpaca from Arequipa, the White City of Peru, where alpacas are raised with care under responsible, certified practices. Every cut and finish reflects precision, sustainability, and the spirit of slow fashion.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_ecL3m3",
+        "heading_Tm4raT",
+        "richtext_dd8XTp"
+      ],
+      "name": "t:sections.image_with_text.presets.image_with_text.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "image": "shopify://shop_images/Transformative_coat-1.jpg",
+        "reveal_on_scroll": true,
+        "image_position": "start",
+        "content_width": "sm",
         "remove_vertical_spacing": true
       }
     }
@@ -183,8 +269,9 @@
     "main",
     "rich_text_k7HmPw",
     "media_grid_KeAeUM",
-    "image_with_text_overlay_GEBUiX",
-    "image_with_text_overlay_bbXwC4",
-    "image_with_text_block_aLGArR"
+    "rich_text_N4VBwB",
+    "image_with_text_i9FbtA",
+    "image_with_text_gwtKLU",
+    "image_with_text_wyrt76"
   ]
 }
